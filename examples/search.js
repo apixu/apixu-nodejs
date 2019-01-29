@@ -1,6 +1,6 @@
 'use strict';
 
-const client = require('../apixu');
+const client = require('..');
 const config = client.config;
 
 config.apikey = process.env.APIXUKEY;

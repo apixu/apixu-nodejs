@@ -1,6 +1,6 @@
 'use strict';
 
-const client = require('../apixu');
+const client = require('..');
 const apixu = new client.Apixu();
 
 apixu.conditions().then(function(conditions) {
