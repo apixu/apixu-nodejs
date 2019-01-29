@@ -1,10 +1,10 @@
 {
-  "name": "@apixu/apixu-nodejs",
+  "name": "apixu",
   "version": "0.2.0",
   "description": "Node.js library for Apixu Weather API",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andreiavrammsd/apixu-nodejs.git"
+    "url": "git+https://github.com/apixu/apixu-nodejs.git"
   },
   "keywords": [
     "apixu",
