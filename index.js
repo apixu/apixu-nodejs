@@ -2,10 +2,16 @@
 
 const http = require('https');
 const queryString = require('querystring');
+
 const API_URL = 'https://api.apixu.com/';
 const API_VERSION = 'v1';
 const FORMAT = 'json';
 const DOC_WEATHER_CONDITIONS_URL = 'https://www.apixu.com/doc/Apixu_weather_conditions.';
+
+const httpStatusOK = 200;
+const httpStatusNotFound = 404;
+const httpStatusInternalServerError = 404;
+
 
 const config = {
 	apikey: null,
@@ -80,6 +86,16 @@ const request = function(url) {
 	return new Promise(function(resolve, reject) {
 		http.get(url, function(res) {
 			res.setEncoding('utf8');
+
+			const { statusCode } = res;
+
+			if (statusCode !== httpStatusOK) {
+				if (statusCode === httpStatusNotFound) {
+					reject({'code': statusCode, message: 'Not found'});
+				} else if (statusCode >= httpStatusInternalServerError) {
+					reject({'code': statusCode, message: 'Interval server error'});
+				}
+			}
 
 			res.on('data', (chunk) => {
 				response += chunk;
