@@ -7,11 +7,11 @@ const API_VERSION = 'v1';
 const FORMAT = 'json';
 const DOC_WEATHER_CONDITIONS_URL = 'https://www.apixu.com/doc/Apixu_weather_conditions.';
 
-exports.config = {
+const config = {
 	apikey: null,
 };
 
-exports.Apixu = class {
+class Apixu {
 	constructor(config) {
 		this.config = config
 	}
@@ -64,6 +64,11 @@ exports.Apixu = class {
 		const url = getUrl('search', params);
 		return request(url)
 	}
+}
+
+module.exports = {
+	config: config,
+	Apixu: Apixu,
 };
 
 const getUrl = function(method, params) {
