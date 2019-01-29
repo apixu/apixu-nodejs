@@ -3,11 +3,11 @@
 const client = require('..');
 const apixu = new client.Apixu();
 
-apixu.conditions().then(function(conditions) {
+apixu.conditions().then((conditions) => {
 	for (const i in conditions) {
 		console.log(conditions[i].code, conditions[i].day)
 	}
-}, function(err) {
+}, (err) => {
 	console.log(err.code, err.message)
 });
 

@@ -6,7 +6,7 @@ const config = client.config;
 config.apikey = process.env.APIXUKEY;
 const apixu = new client.Apixu(config);
 
-apixu.forecast('London', 2).then(function(forecast) {
+apixu.forecast('London', 2).then((forecast) => {
 	console.log(forecast.location.name);
 
 	console.log(forecast.current.last_updated_epoch);
@@ -17,7 +17,7 @@ apixu.forecast('London', 2).then(function(forecast) {
 		console.log(days[i].day.maxtemp_c)
 	}
 
-}, function(err) {
+}, (err) => {
 	console.log(err.code, err.message)
 });
 

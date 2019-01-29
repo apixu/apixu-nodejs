@@ -77,14 +77,14 @@ module.exports = {
 	Apixu: Apixu,
 };
 
-const getUrl = function(method, params) {
+const getUrl = (method, params) => {
 	return API_URL + API_VERSION + '/' + method + '.' + FORMAT + '?' + queryString.stringify(params)
 };
 
-const request = function(url) {
+const request = (url) => {
 	let response = '';
-	return new Promise(function(resolve, reject) {
-		http.get(url, function(res) {
+	return new Promise((resolve, reject) => {
+		http.get(url, (res) => {
 			res.setEncoding('utf8');
 
 			const { statusCode } = res;
@@ -110,7 +110,7 @@ const request = function(url) {
 
 				resolve(r)
 			});
-		}).on('error', function(err) {
+		}).on('error', (err) => {
 			reject(err);
 		}).end();
 	})

@@ -6,12 +6,12 @@ const config = client.config;
 config.apikey = process.env.APIXUKEY;
 const apixu = new client.Apixu(config);
 
-apixu.current('London').then(function(current) {
+apixu.current('London').then((current) => {
 	console.log(current.location.name);
 	console.log(current.location.region);
 
 	console.log(current.current.last_updated_epoch);
-}, function(err) {
+}, (err) => {
 	console.log(err.code, err.message)
 });
 

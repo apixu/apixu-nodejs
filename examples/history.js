@@ -8,7 +8,7 @@ const apixu = new client.Apixu(config);
 
 const date = new Date();
 
-apixu.history('London', date).then(function(history) {
+apixu.history('London', date).then((history) => {
 	console.log(history.location.name);
 
 	const days = history.forecast.forecastday
@@ -17,7 +17,7 @@ apixu.history('London', date).then(function(history) {
 		console.log(days[i].day.maxtemp_c)
 	}
 
-}, function(err) {
+}, (err) => {
 	console.log(err.code, err.message)
 });
 
