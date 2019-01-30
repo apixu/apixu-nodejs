@@ -1,3 +1,4 @@
+/* global describe it */
 'use strict';
 
 const fs = require('fs');
@@ -13,13 +14,13 @@ const apixu = new client.Apixu(config);
 const schema = JSON.parse(fs.readFileSync(__dirname + '/forecast.json'));
 
 describe('Forecast', () => {
-	it('it should retrieve weather forecast by given query and number of days', (done) => {
-		apixu.forecast('London', 2).then((forecast) => {
-			const v = validate(forecast, schema);
-			expect(v.errors, v).to.have.length(0);
-			done();
-		}, (err) => {
-			console.log(err)
-		});
-	});
+  it('it should retrieve forecast by given query and days', (done) => {
+    apixu.forecast('London', 2).then((forecast) => {
+      const v = validate(forecast, schema);
+      expect(v.errors, v).to.have.length(0);
+      done();
+    }, (err) => {
+      console.log(err);
+    });
+  });
 });

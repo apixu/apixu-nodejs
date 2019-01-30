@@ -7,18 +7,18 @@ config.apikey = process.env.APIXUKEY;
 const apixu = new client.Apixu(config);
 
 apixu.forecast('London', 2).then((forecast) => {
-	console.log(forecast.location.name);
+  console.log(forecast.location.name);
 
-	console.log(forecast.current.last_updated_epoch);
+  console.log(forecast.current.last_updated_epoch);
 
-	const days = forecast.forecast.forecastday
-	for (const i in days) {
-		console.log(days[i].date)
-		console.log(days[i].day.maxtemp_c)
-	}
+  const days = forecast.forecast.forecastday;
+  for (const i in days) {
+    console.log(days[i].date);
+    console.log(days[i].day.maxtemp_c);
+  }
 
 }, (err) => {
-	console.log(err.code, err.message)
+  console.log(err.code, err.message);
 });
 
 /*

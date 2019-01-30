@@ -1,3 +1,4 @@
+/* global describe it */
 'use strict';
 
 const fs = require('fs');
@@ -13,13 +14,13 @@ const apixu = new client.Apixu(config);
 const schema = JSON.parse(fs.readFileSync(__dirname + '/search.json'));
 
 describe('Search', () => {
-	it('it should search location by given query', (done) => {
-		apixu.search('London').then((current) => {
-			const v = validate(current, schema);
-			expect(v.errors, v).to.have.length(0);
-			done();
-		}, (err) => {
-			console.log(err)
-		});
-	});
+  it('it should search location by given query', (done) => {
+    apixu.search('London').then((current) => {
+      const v = validate(current, schema);
+      expect(v.errors, v).to.have.length(0);
+      done();
+    }, (err) => {
+      console.log(err);
+    });
+  });
 });

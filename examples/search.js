@@ -7,14 +7,14 @@ config.apikey = process.env.APIXUKEY;
 const apixu = new client.Apixu(config);
 
 apixu.search('London').then((search) => {
-	for (const i in search) {
-		console.log(search[i].id);
-		console.log(search[i].name);
-		console.log(search[i].region);
-		console.log();
-	}
+  for (const i in search) {
+    console.log(search[i].id);
+    console.log(search[i].name);
+    console.log(search[i].region);
+    console.log();
+  }
 }, (err) => {
-	console.log(err.code, err.message);
+  console.log(err.code, err.message);
 });
 
 /*

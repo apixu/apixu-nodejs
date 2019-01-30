@@ -9,16 +9,16 @@ const apixu = new client.Apixu(config);
 const date = new Date();
 
 apixu.history('London', date).then((history) => {
-	console.log(history.location.name);
+  console.log(history.location.name);
 
-	const days = history.forecast.forecastday
-	for (const i in days) {
-		console.log(days[i].date)
-		console.log(days[i].day.maxtemp_c)
-	}
+  const days = history.forecast.forecastday;
+  for (const i in days) {
+    console.log(days[i].date);
+    console.log(days[i].day.maxtemp_c);
+  }
 
 }, (err) => {
-	console.log(err.code, err.message)
+  console.log(err.code, err.message);
 });
 
 /*

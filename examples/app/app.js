@@ -10,7 +10,7 @@ const apixu = new client.Apixu(config);
 const query = 'London';
 
 apixu.current(query).then((current) => {
-    console.log(current.location);
+  console.log(current.location);
 }, (err) => {
-    console.log(err.code, err.message)
+  console.log(err.code, err.message);
 });

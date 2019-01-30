@@ -14,11 +14,14 @@
   "license": "MIT",
   "homepage": "https://www.apixu.com/",
   "devDependencies": {
-    "mocha": "^5.2.0",
     "chai": "^4.2.0",
-    "jsonschema": "^1.2.4"
+    "eslint": "^5.12.1",
+    "eslint-config-strongloop": "^2.1.0",
+    "jsonschema": "^1.2.4",
+    "mocha": "^5.2.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "pretest": "eslint --fix --ignore-path .gitignore ."
   }
 }
