@@ -7,7 +7,7 @@ const expect = require('chai').expect;
 const client = require('..');
 const apixu = new client.Apixu();
 
-const schema = fs.readFileSync(__dirname + '/conditions.json');
+const schema = JSON.parse(fs.readFileSync(__dirname + '/conditions.json'));
 
 describe('Conditions', () => {
 	it('it should retrieve weather conditions list', (done) => {
@@ -20,3 +20,4 @@ describe('Conditions', () => {
 		});
 	});
 });
+conditions
