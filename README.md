@@ -61,6 +61,11 @@ APIXUKEY=yourapikey node examples/<file>.js
 
 You can use with Docker. See [Makefile](Makefile).
 
+Run tests:
+```
+make test NODEVERSION=11 APIXUKEY=yourapikey
+```
+
 Enter environment:
 ```
 make env NODEVERSION=11 APIXUKEY=yourapikey
