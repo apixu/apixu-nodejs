@@ -122,9 +122,11 @@ const request = (url) => {
       reject(err);
     }).end();
 
-    request.setTimeout(HTTP_TIMEOUT, () => {
-      request.abort();
-      reject({code: 0, message: 'The request took too long.'});
-    });
+    if (request.setTimeout !== undefined) {
+      request.setTimeout(HTTP_TIMEOUT, () => {
+        request.abort();
+        reject({code: 0, message: 'The request took too long.'});
+      });
+    }
   });
 };
