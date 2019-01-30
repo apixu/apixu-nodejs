@@ -12,5 +12,13 @@
   ],
   "author": "Andrei Avram <avramandrei@ymail.com>",
   "license": "MIT",
-  "homepage": "https://www.apixu.com/"
+  "homepage": "https://www.apixu.com/",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "chai": "^4.2.0",
+    "jsonschema": "^1.2.4"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }
