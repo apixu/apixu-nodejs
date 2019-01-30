@@ -20,4 +20,3 @@ describe('Conditions', () => {
 		});
 	});
 });
-conditions
