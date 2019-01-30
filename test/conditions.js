@@ -12,7 +12,7 @@ const schema = {
 	"minItems": 1,
 	"items": {
 		"type": "object",
-		"required": ["code"],
+		"required": ["code", "day", "night", "icon"],
 		"properties": {
 			"code" : {
 				"type": "number",
