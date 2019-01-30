@@ -1,7 +1,6 @@
 /* global describe it */
 'use strict';
 
-const fs = require('fs');
 const validate = require('jsonschema').validate;
 const expect = require('chai').expect;
 
@@ -11,7 +10,7 @@ const config = client.config;
 config.apikey = process.env.APIXUKEY;
 const apixu = new client.Apixu(config);
 
-const schema = JSON.parse(fs.readFileSync(__dirname + '/history.json'));
+const schema = require('./schema').read('history.json');
 
 describe('History', () => {
   it('it should retrieve historical data by given query and date', (done) => {

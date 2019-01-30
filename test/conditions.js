@@ -1,14 +1,13 @@
 /* global describe it */
 'use strict';
 
-const fs = require('fs');
 const validate = require('jsonschema').validate;
 const expect = require('chai').expect;
 
 const client = require('..');
 const apixu = new client.Apixu();
 
-const schema = JSON.parse(fs.readFileSync(__dirname + '/conditions.json'));
+const schema = require('./schema').read('conditions.json');
 
 describe('Conditions', () => {
   it('it should retrieve weather conditions list', (done) => {

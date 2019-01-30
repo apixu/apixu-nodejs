@@ -1,7 +1,6 @@
 /* global describe it */
 'use strict';
 
-const fs = require('fs');
 const validate = require('jsonschema').validate;
 const expect = require('chai').expect;
 
@@ -11,7 +10,7 @@ const config = client.config;
 config.apikey = process.env.APIXUKEY;
 const apixu = new client.Apixu(config);
 
-const schema = JSON.parse(fs.readFileSync(__dirname + '/forecast.json'));
+const schema = require('./schema').read('forecast.json');
 
 describe('Forecast', () => {
   it('it should retrieve forecast by given query and days', (done) => {
