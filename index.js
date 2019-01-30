@@ -9,9 +9,9 @@ const FORMAT = 'json';
 const HTTP_TIMEOUT = 20000;
 const DOC_WEATHER_CONDITIONS_URL = 'https://www.apixu.com/doc/Apixu_weather_conditions.';
 
-const httpStatusOK = 200;
-const httpStatusNotFound = 404;
-const httpStatusInternalServerError = 500;
+const HTTP_STATUS_OK = 200;
+const HTTP_STATUS_NOT_FOUND = 404;
+const HTTP_STATUS_INTERNAL_SERVER_ERROR = 500;
 
 const config = {
 	apikey: null,
@@ -89,10 +89,10 @@ const request = (url) => {
 
 			const { statusCode } = res;
 
-			if (statusCode !== httpStatusOK) {
-				if (statusCode === httpStatusNotFound) {
+			if (statusCode !== HTTP_STATUS_OK) {
+				if (statusCode === HTTP_STATUS_NOT_FOUND) {
 					reject({'code': statusCode, message: 'Not found'});
-				} else if (statusCode >= httpStatusInternalServerError) {
+				} else if (statusCode >= HTTP_STATUS_INTERNAL_SERVER_ERROR) {
 					reject({'code': statusCode, message: 'Interval server error'});
 				}
 			}
