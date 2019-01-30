@@ -10,7 +10,7 @@ const config = client.config;
 config.apikey = process.env.APIXUKEY;
 const apixu = new client.Apixu(config);
 
-const schema = fs.readFileSync(__dirname + '/current.json');
+const schema = JSON.parse(fs.readFileSync(__dirname + '/current.json'));
 
 describe('Current', () => {
 	it('it should retrieve current weather information by given query', (done) => {
