@@ -50,9 +50,9 @@ class Apixu {
   history(query, since) {
     if (!(since instanceof Date)) {
       return new Promise((resolve, reject) => {
-        reject({
-          code: 0, message: 'Param \'since\' must be of Date type.',
-        });
+        const error = new Error('Param \'since\' must be of Date type.');
+        error.code = 0;
+        reject(error);
       });
     }
 
@@ -99,9 +99,13 @@ const request = (url) => {
 
       if (statusCode !== HTTP_STATUS_OK) {
         if (statusCode === HTTP_STATUS_NOT_FOUND) {
-          reject({code: statusCode, message: 'Not found'});
+          const error = new Error('Not found');
+          error.code = statusCode;
+          reject(error);
         } else if (statusCode >= HTTP_STATUS_INTERNAL_SERVER_ERROR) {
-          reject({code: statusCode, message: 'Interval server error'});
+          const error = new Error('Interval server error');
+          error.code = statusCode;
+          reject(error);
         }
       }
 
@@ -113,7 +117,9 @@ const request = (url) => {
         const r = JSON.parse(response);
 
         if (r.error !== undefined) {
-          reject(r.error);
+          const error = new Error(r.error.message);
+          error.code = r.error.code;
+          reject(error);
         }
 
         resolve(r);
@@ -125,7 +131,10 @@ const request = (url) => {
     if (request.setTimeout !== undefined) {
       request.setTimeout(HTTP_TIMEOUT, () => {
         request.abort();
-        reject({code: 0, message: 'The request took too long.'});
+
+        const error = new Error('The request took too long.');
+        error.code = 0;
+        reject(error);
       });
     }
   });

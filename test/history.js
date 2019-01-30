@@ -25,9 +25,9 @@ describe('History', () => {
   });
 
   it('it should return an error if an invalid date instance sent', (done) => {
-    apixu.history('London', 'date').then(() => {
-    }, (err) => {
-      expect(err).to.be.an('object');
+    apixu.history('London', 'date').then(() => {}, (err) => {
+      expect(err.code).to.be.eql(0);
+      expect(err).to.be.an('error');
       done();
     });
   });
