@@ -6,12 +6,12 @@ const queryString = require('querystring');
 const API_URL = 'https://api.apixu.com/';
 const API_VERSION = 'v1';
 const FORMAT = 'json';
+const HTTP_TIMEOUT = 20000;
 const DOC_WEATHER_CONDITIONS_URL = 'https://www.apixu.com/doc/Apixu_weather_conditions.';
 
 const httpStatusOK = 200;
 const httpStatusNotFound = 404;
 const httpStatusInternalServerError = 404;
-
 
 const config = {
 	apikey: null,
@@ -84,7 +84,7 @@ const getUrl = (method, params) => {
 const request = (url) => {
 	let response = '';
 	return new Promise((resolve, reject) => {
-		http.get(url, (res) => {
+		const request = http.get(url, (res) => {
 			res.setEncoding('utf8');
 
 			const { statusCode } = res;
@@ -113,5 +113,10 @@ const request = (url) => {
 		}).on('error', (err) => {
 			reject(err);
 		}).end();
+
+		request.setTimeout(HTTP_TIMEOUT, () => {
+			request.abort();
+			reject({'code': 0, message: 'The request took too long.'});
+		});
 	})
 };
