@@ -11,7 +11,7 @@ const DOC_WEATHER_CONDITIONS_URL = 'https://www.apixu.com/doc/Apixu_weather_cond
 
 const httpStatusOK = 200;
 const httpStatusNotFound = 404;
-const httpStatusInternalServerError = 404;
+const httpStatusInternalServerError = 500;
 
 const config = {
 	apikey: null,
