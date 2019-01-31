@@ -51,7 +51,6 @@ class Apixu {
     if (!(since instanceof Date)) {
       return new Promise((resolve, reject) => {
         const error = new Error('Param \'since\' must be of Date type.');
-        error.code = 0;
         reject(error);
       });
     }
@@ -133,7 +132,6 @@ const request = (url) => {
         request.abort();
 
         const error = new Error('The request took too long.');
-        error.code = 0;
         reject(error);
       });
     }
