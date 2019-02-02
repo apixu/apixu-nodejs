@@ -57,6 +57,10 @@ See the [examples](./examples).
 APIXUKEY=yourapikey node examples/<file>.js
 ```
 
+## Documentation
+
+https://www.apixu.com/doc/
+
 ## Development
 
 You can use with Docker. See [Makefile](Makefile).
