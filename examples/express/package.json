@@ -1,0 +1,13 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "description": "Express app using Apixu",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "apixu": "apixu/apixu-nodejs#vX.X.X",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4"
+  }
+}

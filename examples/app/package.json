@@ -1,0 +1,12 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "description": "Basic app using Apixu",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "apixu": "apixu/apixu-nodejs#vX.X.X",
+    "dotenv": "^6.2.0"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "apixu",
+  "version": "0.2.0",
+  "description": "Node.js library for Apixu Weather API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apixu/apixu-nodejs.git"
+  },
+  "keywords": [
+    "apixu",
+    "weather"
+  ],
+  "author": "Andrei Avram <avramandrei@ymail.com>",
+  "license": "MIT",
+  "homepage": "https://www.apixu.com/",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.12.1",
+    "eslint-config-strongloop": "^2.1.0",
+    "jsonschema": "^1.2.4",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
+  },
+  "scripts": {
+    "test": "nyc mocha",
+    "pretest": "eslint --fix --ignore-path .gitignore ."
+  }
+}
