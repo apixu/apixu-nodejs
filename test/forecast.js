@@ -14,7 +14,7 @@ const schema = require('./schema').read('forecast.json');
 
 describe('Forecast', () => {
   it('it should retrieve forecast by given query and days', (done) => {
-    apixu.forecast('London', 2).then((forecast) => {
+    apixu.forecast('London', 2, 15).then((forecast) => {
       const v = validate(forecast, schema);
       expect(v.errors, v).to.have.length(0);
       done();
