@@ -37,20 +37,31 @@ class Apixu {
     return request(url);
   }
 
-  forecast(query, days) {
-    const params = {
+  forecast(query, days, hour) {
+    let params = {
       key: this.config.apikey,
       q: query,
       days: days,
     };
+    if (hour !== undefined) {
+      params['hour'] = hour;
+    }
+
     const url = getUrl('forecast', params);
     return request(url);
   }
 
-  history(query, since) {
+  history(query, since, until) {
     if (!(since instanceof Date)) {
       return new Promise((resolve, reject) => {
         const error = new Error('Param \'since\' must be of Date type.');
+        reject(error);
+      });
+    }
+
+    if (until !== undefined && !(until instanceof Date)) {
+      return new Promise((resolve, reject) => {
+        const error = new Error('Param \'until\' must be of Date type.');
         reject(error);
       });
     }
@@ -62,6 +73,12 @@ class Apixu {
           (since.getMonth() + 1) + '-'
           + since.getDate(),
     };
+    if (until instanceof Date) {
+      params['end_dt'] = until.getFullYear() + '-' +
+        (until.getMonth() + 1) + '-'
+        + until.getDate();
+    }
+
     const url = getUrl('history', params);
     return request(url);
   }

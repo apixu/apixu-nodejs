@@ -52,7 +52,9 @@ apixu.current('London').then((current) => {
       "feelslike_f":34.2,
       "vis_km":10.0,
       "vis_miles":6.0,
-      "uv":0.0
+      "uv":0.0,
+      "gust_mph":11.6,
+      "gust_kph":18.7
    }
 }
 */
