@@ -144,7 +144,7 @@ const request = (url) => {
       reject(err);
     }).end();
 
-    if (request.setTimeout !== undefined) {
+    if (request && request.setTimeout !== undefined) {
       request.setTimeout(HTTP_TIMEOUT, () => {
         request.abort();
 
