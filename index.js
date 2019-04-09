@@ -140,17 +140,23 @@ const request = (url) => {
 
         resolve(r);
       });
-    }).on('error', (err) => {
+    })
+
+    request.on('error', (err) => {
       reject(err);
     }).end();
 
-    if (request.setTimeout !== undefined) {
-      request.setTimeout(HTTP_TIMEOUT, () => {
-        request.abort();
+    const timeout = () => {
+      request.abort();
+      const error = new Error('The request took too long.');
+      reject(error);
+    }
 
-        const error = new Error('The request took too long.');
-        reject(error);
-      });
+    if (typeof window === 'undefined') {
+      request.setTimeout(HTTP_TIMEOUT, timeout);
+    } else {
+      request.setTimeout = window.setTimeout.bind(window)
+      request.setTimeout(timeout, HTTP_TIMEOUT);
     }
   });
 };
