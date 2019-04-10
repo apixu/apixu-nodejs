@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-env node, browser */
+
 const http = require('https');
 const queryString = require('querystring');
 
