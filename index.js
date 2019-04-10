@@ -142,7 +142,7 @@ const request = (url) => {
 
         resolve(r);
       });
-    })
+    });
 
     request.on('error', (err) => {
       reject(err);
@@ -152,12 +152,12 @@ const request = (url) => {
       request.abort();
       const error = new Error('The request took too long.');
       reject(error);
-    }
+    };
 
     if (typeof window === 'undefined') {
       request.setTimeout(HTTP_TIMEOUT, timeout);
     } else {
-      request.setTimeout = window.setTimeout.bind(window)
+      request.setTimeout = window.setTimeout.bind(window);
       request.setTimeout(timeout, HTTP_TIMEOUT);
     }
   });
