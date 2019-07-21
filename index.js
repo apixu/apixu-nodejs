@@ -119,11 +119,13 @@ const request = (url) => {
         if (statusCode === HTTP_STATUS_NOT_FOUND) {
           const error = new Error('Not found');
           error.code = statusCode;
-          reject(error);
-        } else if (statusCode >= HTTP_STATUS_INTERNAL_SERVER_ERROR) {
+          return reject(error);
+        }
+
+        if (statusCode >= HTTP_STATUS_INTERNAL_SERVER_ERROR) {
           const error = new Error('Interval server error');
           error.code = statusCode;
-          reject(error);
+          return reject(error);
         }
       }
 
@@ -134,15 +136,15 @@ const request = (url) => {
       res.on('end', () => {
         let r;
         try {
-            r = JSON.parse(response);
-        } catch(e) {
-            return reject(e);
+          r = JSON.parse(response);
+        } catch (e) {
+          return reject(e);
         }
-          
+
         if (r.error !== undefined) {
           const error = new Error(r.error.message);
           error.code = r.error.code;
-          reject(error);
+          return reject(error);
         }
 
         resolve(r);
