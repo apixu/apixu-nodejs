@@ -132,8 +132,13 @@ const request = (url) => {
       });
 
       res.on('end', () => {
-        const r = JSON.parse(response);
-
+        let r;
+        try {
+            r = JSON.parse(response);
+        } catch(e) {
+            return reject(e);
+        }
+          
         if (r.error !== undefined) {
           const error = new Error(r.error.message);
           error.code = r.error.code;
